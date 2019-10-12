@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  dbdata:
+    image: busybox
+    volumes:
+    - /var/lib/postgresql/data
+  db:
+    image: postgres:9.4
+    volumes_from:
+    - dbdata
+    ports:
+      - '5432:5432'
+    container_name: socnet_db
